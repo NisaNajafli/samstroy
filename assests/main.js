@@ -91,4 +91,25 @@ let swiperProjects = new Swiper(".products-swiper", {
   }
 });
 });
+const mainButton = document.getElementById('main-button');
+
+mainButton.addEventListener('click', function () {
+  this.classList.toggle('open');
+});
+const humb = document.querySelector('.header-humb__icon');
+const mobileMenu = document.querySelector('.mobile-menu');
+const closeBtn = document.querySelector('.mobile-menu__close');
+
+/* hamburger – open / close */
+humb.addEventListener('click', () => {
+  mobileMenu.classList.toggle('is-open');
+});
+
+/* SVG close icon */
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('is-open');
+  });
+}
+
 document.getElementById("year").textContent = new Date().getFullYear()
