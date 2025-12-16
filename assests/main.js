@@ -23,10 +23,8 @@ navigation: {
 let swiperProjects = new Swiper(".products-swiper", {
       spaceBetween: 20,
       slidesPerView: 3,
-      // autoplay: {
-      //   delay: 2500,
-      //   disableOnInteraction: false,
-      // },
+      allowTouchMove: false,
+    simulateTouch: false,
       breakpoints: {
       320: { slidesPerView: 1.3 },
       576: { slidesPerView: 2 },
@@ -83,7 +81,7 @@ let swiperProjects = new Swiper(".products-swiper", {
   loop: true, 
   slidesPerView: 1,
   spaceBetween: 30,
-  autoplay: { delay: 3000, disableOnInteraction: false },
+  // autoplay: { delay: 3000, disableOnInteraction: false },
   pagination: { el: '.swiper-pagination', clickable: true },
   navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
   breakpoints: {

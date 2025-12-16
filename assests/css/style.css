@@ -58,6 +58,21 @@ section{
   align-items: center;
   justify-content: space-between;
 }
+.header-btn{
+  font-size: 16px;
+  border: 1px solid var(--black);
+  padding: 7px;
+  transition: .5s ease;
+  overflow: hidden;
+}
+.header-btn:hover{
+  background-color: VAR(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.header-btn:hover span{
+   animation: MoveUpInitial .2s forwards, MoveUpEnd .2s forwards .2s
+}
 
 .header__left {
   display: flex;
@@ -83,13 +98,13 @@ section{
 .header-icons{
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .header-icons a{
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   font-size: 15px;
   color: var(--black);
   white-space: nowrap;
@@ -100,8 +115,8 @@ section{
 }
 
 .header-icons svg{
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
 }
 
 .header-icons a:nth-child(3){
