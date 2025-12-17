@@ -96,20 +96,66 @@ const mainButton = document.getElementById('main-button');
 mainButton.addEventListener('click', function () {
   this.classList.toggle('open');
 });
-const humb = document.querySelector('.header-humb__icon');
-const mobileMenu = document.querySelector('.mobile-menu');
-const closeBtn = document.querySelector('.mobile-menu__close');
+document.addEventListener('DOMContentLoaded', () => {
 
-/* hamburger – open / close */
-humb.addEventListener('click', () => {
-  mobileMenu.classList.toggle('is-open');
+  const humb = document.querySelector('.header-humb__icon');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const overlay = document.querySelector('.menu-overlay');
+  const closeBtn = document.querySelector('.mobile-menu__close');
+
+  if (!humb || !mobileMenu || !overlay || !closeBtn) return;
+
+  function openMenu() {
+    mobileMenu.classList.add('is-open');
+    overlay.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    overlay.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+
+  humb.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+      closeMenu();
+    }
+  });
+
+});
+const openBtns = document.querySelectorAll('[data-modal-open]');
+const modal = document.querySelector('[data-modal]');
+const overlay = document.querySelector('[data-modal-overlay]');
+const closeBtn = document.querySelector('[data-modal-close]');
+
+function openModal(e) {
+  e.preventDefault();
+  modal.classList.add('is-active');
+  overlay.classList.add('is-active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.classList.remove('is-active');
+  overlay.classList.remove('is-active');
+  document.body.style.overflow = '';
+}
+
+openBtns.forEach(btn => {
+  btn.addEventListener('click', openModal);
 });
 
-/* SVG close icon */
-if (closeBtn) {
-  closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('is-open');
-  });
-}
+overlay.addEventListener('click', closeModal);
+closeBtn.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
 
 document.getElementById("year").textContent = new Date().getFullYear()
